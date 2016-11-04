@@ -1,0 +1,24 @@
+{
+  "name": "simple-react-docgen",
+  "version": "1.0.0",
+  "description": "Generate a simple React component documentation in Markdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aitherios/simple-react-docgen.git"
+  },
+  "keywords": [
+    "react",
+    "react-docgen",
+    "markdown"
+  ],
+  "author": "Renan Mendes Carvalho <aitherios@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aitherios/simple-react-docgen/issues"
+  },
+  "homepage": "https://github.com/aitherios/simple-react-docgen#readme"
+}
