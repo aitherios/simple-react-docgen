@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint src",
     "transpile": "babel src -D -d dist --ignore '__tests__'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "babel src -D -d dist --ignore '__tests__' --watch",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,18 +25,22 @@
   },
   "homepage": "https://github.com/aitherios/simple-react-docgen#readme",
   "dependencies": {
+    "nomnom": "^1.8.1",
     "react-docgen": "^2.12.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-eslint": "^7.1.0",
+    "babel-jest": "^16.0.0",
     "babel-preset-latest": "^6.16.0",
     "eslint": "^3.9.1",
     "eslint-config-react-app": "^0.3.0",
     "eslint-plugin-flowtype": "^2.25.0",
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.5.0"
+    "eslint-plugin-react": "^6.5.0",
+    "jest-cli": "^16.0.2",
+    "react": "^15.3.2"
   },
   "babel": {
     "presets": [
@@ -44,5 +49,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "testPathDirs": [
+      "src"
+    ],
+    "testRegex": "/__tests__/.*-test\\.js$"
   }
 }
