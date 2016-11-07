@@ -65,6 +65,15 @@ describe('./simple-react-docgen.js', () => {
         expect(stderr).toBe('')
       })
     }, TEST_TIMEOUT)
+
+    it('returns the documentation markdown', () => {
+      let component = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.js'))
+      let markdown = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.md'))
+      return run([], component).then(([stdout, stderr]) => {
+        expect(stdout).toBe(markdown)
+        expect(stderr).toBe('')
+      })
+    })
   })
 
   // reading file NotAComponent.js from stdin
