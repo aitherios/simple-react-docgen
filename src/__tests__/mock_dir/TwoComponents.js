@@ -1,15 +1,17 @@
 var React = require('react');
 
+/** ComponentA description */
 exports.ComponentA = React.createClass({
   displayName: 'ComponentA',
   render: function() {
-    return('ComponentA');
+    return(<span>{'ComponentA'}</span>);
   },
 });
 
+/** ComponentB descripton */
 exports.ComponentB = React.createClass({
   displayName: 'ComponentB',
   render: function() {
-    return('ComponentB');
+    return(<span>{'ComponentB'}</span>);
   },
 });
