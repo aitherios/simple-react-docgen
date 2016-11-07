@@ -34,17 +34,6 @@ function run(args, stdin) {
 }
 
 describe('./simple-react-docgen.js', () => {
-  // reading file TwoComponents.js from stdin
-  describe('< mock_dir/TwoComponents.js', () => {
-    it('writes to sdout and do not err', () => {
-      let component = fs.readFileSync(path.join(__dirname, './mock_dir/TwoComponents.js'))
-      return run([], component).then(([stdout, stderr]) => {
-        expect(stdout).not.toBe('')
-        expect(stderr).toBe('')
-      })
-    }, TEST_TIMEOUT)
-  })
-
   // reading file ClassComponent.js from stdin
   describe('< mock_dir/ClassComponent.js', () => {
     it('writes to sdout and do not err', () => {
@@ -60,6 +49,17 @@ describe('./simple-react-docgen.js', () => {
   describe('< mock_dir/StatelessComponent.js', () => {
     it('writes to sdout and do not err', () => {
       let component = fs.readFileSync(path.join(__dirname, './mock_dir/StatelessComponent.js'))
+      return run([], component).then(([stdout, stderr]) => {
+        expect(stdout).not.toBe('')
+        expect(stderr).toBe('')
+      })
+    }, TEST_TIMEOUT)
+  })
+
+  // reading file ReactCreateClassComponent.js from stdin
+  describe('< mock_dir/ReactCreateClassComponent.js', () => {
+    it('writes to sdout and do not err', () => {
+      let component = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.js'))
       return run([], component).then(([stdout, stderr]) => {
         expect(stdout).not.toBe('')
         expect(stderr).toBe('')
