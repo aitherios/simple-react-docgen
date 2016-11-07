@@ -1,7 +1,7 @@
 {
   "name": "simple-react-docgen",
   "version": "1.0.0",
-  "description": "Generate a simple React component documentation in Markdown",
+  "description": "Generate simple React components documentation in Markdown",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src",

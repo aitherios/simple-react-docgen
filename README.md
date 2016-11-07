@@ -1,2 +1,3 @@
 # simple-react-docgen
-Generate a simple React component documentation in Markdown
+
+Generate simple React components documentation in Markdown.
