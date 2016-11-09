@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/aitherios/simple-react-docgen#readme",
   "dependencies": {
+    "handlebars": "^4.0.5",
     "nomnom": "^1.8.1",
     "react-docgen": "^2.12.1"
   },

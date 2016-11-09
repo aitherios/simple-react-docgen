@@ -68,9 +68,15 @@ describe('./simple-react-docgen.js', () => {
 
     it('returns the documentation markdown', () => {
       let component = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.js'))
-      let markdown = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.md'))
       return run([], component).then(([stdout, stderr]) => {
-        expect(stdout).toBe(markdown)
+        // returns the filled in template
+        expect(stdout).toBe(`
+**ReactCreateClassComponent** ReactCreateClassComponent description
+
+Property | Type | Required | Description
+:--- | :--- | :--- | :---
+`
+        )
         expect(stderr).toBe('')
       })
     })
@@ -81,8 +87,8 @@ describe('./simple-react-docgen.js', () => {
     it('writes to sdout and do not err', () => {
       let component = fs.readFileSync(path.join(__dirname, './mock_dir/NotAComponent.js'))
       return run([], component).then(([stdout, stderr]) => {
-        expect(stdout).not.toBe('')
-        expect(stderr).toBe('')
+        expect(stdout).toBe("\n")
+        expect(stderr).not.toBe('')
       })
     }, TEST_TIMEOUT)
   })
