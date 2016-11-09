@@ -43,6 +43,22 @@ describe('./simple-react-docgen.js', () => {
         expect(stderr).toBe('')
       })
     }, TEST_TIMEOUT)
+
+    it('returns the documentation markdown', () => {
+      let component = fs.readFileSync(path.join(__dirname, './mock_dir/ClassComponent.js'))
+      return run([], component).then(([stdout, stderr]) => {
+        // returns the filled in template
+        expect(stdout).toBe(`
+ClassComponent description
+
+Property | Type | Required | Description
+:--- | :--- | :--- | :---
+name|string||name description
+`
+        )
+        expect(stderr).toBe('')
+      })
+    })
   })
 
   // reading file StatelessComponent.js from stdin
@@ -54,6 +70,22 @@ describe('./simple-react-docgen.js', () => {
         expect(stderr).toBe('')
       })
     }, TEST_TIMEOUT)
+
+    it('returns the documentation markdown', () => {
+      let component = fs.readFileSync(path.join(__dirname, './mock_dir/StatelessComponent.js'))
+      return run([], component).then(([stdout, stderr]) => {
+        // returns the filled in template
+        expect(stdout).toBe(`
+StatelessComponent description
+
+Property | Type | Required | Description
+:--- | :--- | :--- | :---
+name|string||name description
+`
+        )
+        expect(stderr).toBe('')
+      })
+    })
   })
 
   // reading file ReactCreateClassComponent.js from stdin
