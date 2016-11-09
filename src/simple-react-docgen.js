@@ -23,6 +23,7 @@ const argv = require('nomnom')
     },
     extensions: {
       abbr: 'x',
+      full: 'extension',
       help: 'File extensions to consider. Repeat to define multiple extensions. Default:',
       list: true,
       default: ['js', 'jsx'],
@@ -39,7 +40,7 @@ const argv = require('nomnom')
       full: 'ignore',
       help: 'Folders to ignore. Default:',
       list: true,
-      default: ['node_modules', '__tests__'],
+      default: ['node_modules', '__tests__', '__mocks__'],
     }
   })
   .parse()
