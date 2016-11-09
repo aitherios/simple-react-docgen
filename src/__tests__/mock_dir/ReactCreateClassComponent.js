@@ -6,10 +6,12 @@ exports.ReactCreateClassComponent = React.createClass({
 
   propTypes: {
     /** name description */
-    name: React.PropTypes.string
+    name: React.PropTypes.string.isRequired,
+    /** age description */
+    age: React.PropTypes.number
   },
 
   render: function() {
-    return(<span>{'ReactCreateClassComponent'}</span>)
+    return(<span>{name}-{age}</span>)
   },
 })

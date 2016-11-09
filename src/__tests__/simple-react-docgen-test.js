@@ -75,6 +75,8 @@ describe('./simple-react-docgen.js', () => {
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
+name|string|yes|name description
+age|number||age description
 `
         )
         expect(stderr).toBe('')
