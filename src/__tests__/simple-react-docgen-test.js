@@ -37,16 +37,16 @@ describe('./simple-react-docgen.js', () => {
   // reading file ClassComponent.js from stdin
   describe('< mock_dir/ClassComponent.js', () => {
     it('writes to sdout and do not err', () => {
-      let component = fs.readFileSync(path.join(__dirname, './mock_dir/ClassComponent.js'))
-      return run([], component).then(([stdout, stderr]) => {
+      let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/ClassComponent.js'))
+      return run([], stdin).then(([stdout, stderr]) => {
         expect(stdout).not.toBe('')
         expect(stderr).toBe('')
       })
     }, TEST_TIMEOUT)
 
     it('returns the documentation markdown', () => {
-      let component = fs.readFileSync(path.join(__dirname, './mock_dir/ClassComponent.js'))
-      return run([], component).then(([stdout, stderr]) => {
+      let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/ClassComponent.js'))
+      return run([], stdin).then(([stdout, stderr]) => {
         // returns the filled in template
         expect(stdout).toBe(`
 ClassComponent description
@@ -64,16 +64,16 @@ name|string||name description
   // reading file StatelessComponent.js from stdin
   describe('< mock_dir/StatelessComponent.js', () => {
     it('writes to sdout and do not err', () => {
-      let component = fs.readFileSync(path.join(__dirname, './mock_dir/StatelessComponent.js'))
-      return run([], component).then(([stdout, stderr]) => {
+      let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/StatelessComponent.js'))
+      return run([], stdin).then(([stdout, stderr]) => {
         expect(stdout).not.toBe('')
         expect(stderr).toBe('')
       })
     }, TEST_TIMEOUT)
 
     it('returns the documentation markdown', () => {
-      let component = fs.readFileSync(path.join(__dirname, './mock_dir/StatelessComponent.js'))
-      return run([], component).then(([stdout, stderr]) => {
+      let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/StatelessComponent.js'))
+      return run([], stdin).then(([stdout, stderr]) => {
         // returns the filled in template
         expect(stdout).toBe(`
 StatelessComponent description
@@ -91,16 +91,16 @@ name|string||name description
   // reading file ReactCreateClassComponent.js from stdin
   describe('< mock_dir/ReactCreateClassComponent.js', () => {
     it('writes to sdout and do not err', () => {
-      let component = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.js'))
-      return run([], component).then(([stdout, stderr]) => {
+      let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.js'))
+      return run([], stdin).then(([stdout, stderr]) => {
         expect(stdout).not.toBe('')
         expect(stderr).toBe('')
       })
     }, TEST_TIMEOUT)
 
     it('returns the documentation markdown', () => {
-      let component = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.js'))
-      return run([], component).then(([stdout, stderr]) => {
+      let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.js'))
+      return run([], stdin).then(([stdout, stderr]) => {
         // returns the filled in template
         expect(stdout).toBe(`
 **ReactCreateClassComponent** ReactCreateClassComponent description
@@ -119,8 +119,8 @@ age|number||age description
   // reading file NotAComponent.js from stdin
   describe('< mock_dir/NotAComponent.js', () => {
     it('writes to sdout and do not err', () => {
-      let component = fs.readFileSync(path.join(__dirname, './mock_dir/NotAComponent.js'))
-      return run([], component).then(([stdout, stderr]) => {
+      let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/NotAComponent.js'))
+      return run([], stdin).then(([stdout, stderr]) => {
         expect(stdout).toBe("\n")
         expect(stderr).not.toBe('')
       })
