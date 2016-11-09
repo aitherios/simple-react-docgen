@@ -21,7 +21,7 @@ const argv = require('nomnom')
       list: true,
       default: [],
     },
-    extension: {
+    extensions: {
       abbr: 'x',
       help: 'File extensions to consider. Repeat to define multiple extensions. Default:',
       list: true,
@@ -47,21 +47,24 @@ const argv = require('nomnom')
 const template = Handlebars.compile(`${fs.readFileSync(path.join(__dirname, 'template.handlebars'))}`)
 const templateData = { files: [] }
 
-// when no files where received
+// when no paths
 if ((argv.paths).length === 0) {
   writeDocFromStdin()
+// when list of paths
 } else {
   argv.paths.forEach((path) => {
     writeDocFromDirectory(path)
   })
 }
 
-// write documentation from a directory files
+/**
+ * write documentation from a directory files
+ */
 function writeDocFromDirectory(directoryPath) {
   dir.readFiles(
     directoryPath,
     {
-      match: new RegExp('\\.(?:' + argv.extension.join('|') + ')$'),
+      match: new RegExp('\\.(?:' + argv.extensions.join('|') + ')$'),
       exclude: argv.excludePatterns,
       excludeDir: argv.ignoreDir,
     },
@@ -84,7 +87,9 @@ function writeDocFromDirectory(directoryPath) {
   )
 }
 
-// write documentation from STDIN
+/**
+ * write documentation from STDIN
+ */
 function writeDocFromStdin() {
   // ensure we are using utf8 encoding
   process.stdin.setEncoding('utf8')
