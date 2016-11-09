@@ -30,7 +30,7 @@ const argv = require('nomnom')
     excludePatterns: {
       abbr: 'e',
       full: 'exclude',
-      help: 'Filename pattern to exclude. Default:',
+      help: 'Filename patterns to exclude. Default:',
       list: true,
       default: [],
     },
