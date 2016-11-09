@@ -1,15 +1,18 @@
+{{#each files}}
 {{#if filename}}
 ### `{{filename}}`
-{{/if}}
 
+{{/if}}
 {{#each components}}
 {{#if displayName}}**{{displayName}}** {{/if}}{{#if description}}{{description}}{{/if}}
-
 {{#if props}}
+
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
 {{#each props}}
 {{@key}}|{{type.name}}|{{#if required}}yes{{/if}}|{{description}}
 {{/each}}
 {{/if}}
+{{/each}}
+
 {{/each}}

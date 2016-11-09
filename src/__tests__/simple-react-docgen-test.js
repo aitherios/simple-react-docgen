@@ -48,12 +48,13 @@ describe('./simple-react-docgen.js', () => {
       let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/ClassComponent.js'))
       return run([], stdin).then(([stdout, stderr]) => {
         // returns the filled in template
-        expect(stdout).toBe(`
-ClassComponent description
+        expect(stdout).toBe(
+`ClassComponent description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
 name|string||name description
+
 `
         )
         expect(stderr).toBe('')
@@ -75,12 +76,13 @@ name|string||name description
       let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/StatelessComponent.js'))
       return run([], stdin).then(([stdout, stderr]) => {
         // returns the filled in template
-        expect(stdout).toBe(`
-StatelessComponent description
+        expect(stdout).toBe(
+`StatelessComponent description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
 name|string||name description
+
 `
         )
         expect(stderr).toBe('')
@@ -102,13 +104,14 @@ name|string||name description
       let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/ReactCreateClassComponent.js'))
       return run([], stdin).then(([stdout, stderr]) => {
         // returns the filled in template
-        expect(stdout).toBe(`
-**ReactCreateClassComponent** ReactCreateClassComponent description
+        expect(stdout).toBe(
+`**ReactCreateClassComponent** ReactCreateClassComponent description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
 name|string|yes|name description
 age|number||age description
+
 `
         )
         expect(stderr).toBe('')
@@ -118,12 +121,56 @@ age|number||age description
 
   // reading file NotAComponent.js from stdin
   describe('< mock_dir/NotAComponent.js', () => {
-    it('writes to sdout and do not err', () => {
+    it('writes to stderr', () => {
       let stdin = fs.readFileSync(path.join(__dirname, './mock_dir/NotAComponent.js'))
       return run([], stdin).then(([stdout, stderr]) => {
-        expect(stdout).toBe("\n")
+        expect(stdout).toBe("")
         expect(stderr).not.toBe('')
       })
     }, TEST_TIMEOUT)
+  })
+
+  // crawling mock_dir directory
+  describe('mock_dir', () => {
+    it('writes to sdout and stderr', () => {
+      return run([path.join(__dirname, './mock_dir')]).then(([stdout, stderr]) => {
+        expect(stdout).not.toBe('')
+        expect(stderr).not.toBe('')
+      })
+    }, TEST_TIMEOUT)
+
+    it('returns the documentation markdown', () => {
+      return run(['src/__tests__/mock_dir']).then(([stdout, stderr]) => {
+        // returns the filled in template
+        expect(stdout).toBe(
+`### \`src/__tests__/mock_dir/ClassComponent.js\`
+
+ClassComponent description
+
+Property | Type | Required | Description
+:--- | :--- | :--- | :---
+name|string||name description
+
+### \`src/__tests__/mock_dir/ReactCreateClassComponent.js\`
+
+**ReactCreateClassComponent** ReactCreateClassComponent description
+
+Property | Type | Required | Description
+:--- | :--- | :--- | :---
+name|string|yes|name description
+age|number||age description
+
+### \`src/__tests__/mock_dir/StatelessComponent.js\`
+
+StatelessComponent description
+
+Property | Type | Required | Description
+:--- | :--- | :--- | :---
+name|string||name description
+
+`
+        )
+      })
+    })
   })
 })
