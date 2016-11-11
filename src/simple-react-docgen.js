@@ -35,7 +35,7 @@ const argv = require('nomnom')
       list: true,
       default: [],
     },
-    ignoreDir: {
+    ignoreDirs: {
       abbr: 'i',
       full: 'ignore',
       help: 'Folders to ignore. Default:',
@@ -45,6 +45,7 @@ const argv = require('nomnom')
   })
   .parse()
 
+// template used to generate the markdown
 const template = Handlebars.compile(`${fs.readFileSync(path.join(__dirname, 'template.handlebars'))}`)
 const templateData = { files: [] }
 
@@ -67,7 +68,7 @@ function writeDocFromDirectory(directoryPath) {
     {
       match: new RegExp('\\.(?:' + argv.extensions.join('|') + ')$'),
       exclude: argv.excludePatterns,
-      excludeDir: argv.ignoreDir,
+      excludeDir: argv.ignoreDirs,
     },
     function(error, content, filename, next) {
       if (error) { throw error }
