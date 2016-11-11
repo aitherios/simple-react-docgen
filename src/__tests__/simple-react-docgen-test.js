@@ -173,4 +173,44 @@ name|string||name description
       })
     })
   })
+
+  // passing files directly
+  describe('mock_dir/ClassComponent.js mock_dir/ReactCreateClassComponent.js', () => {
+    it('writes to sdout and stderr', () => {
+      return run([path.join(__dirname, './mock_dir')]).then(([stdout, stderr]) => {
+        expect(stdout).not.toBe('')
+        expect(stderr).not.toBe('')
+      })
+    }, TEST_TIMEOUT)
+
+    it('returns the documentation markdown', () => {
+      return run([
+        'src/__tests__/mock_dir/ClassComponent.js',
+        'src/__tests__/mock_dir/ReactCreateClassComponent.js'
+      ]).then(([stdout, stderr]) => {
+        // returns the filled in template
+        expect(stdout).toBe(
+`### \`src/__tests__/mock_dir/ClassComponent.js\`
+
+ClassComponent description
+
+Property | Type | Required | Description
+:--- | :--- | :--- | :---
+name|string||name description
+
+### \`src/__tests__/mock_dir/ReactCreateClassComponent.js\`
+
+**ReactCreateClassComponent** ReactCreateClassComponent description
+
+Property | Type | Required | Description
+:--- | :--- | :--- | :---
+name|string|yes|name description
+age|number||age description
+
+`
+        )
+      })
+    })
+  })
+
 })

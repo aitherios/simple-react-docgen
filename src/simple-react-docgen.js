@@ -47,15 +47,27 @@ const argv = require('nomnom')
 
 // template used to generate the markdown
 const template = Handlebars.compile(`${fs.readFileSync(path.join(__dirname, 'template.handlebars'))}`)
-const templateData = { files: [] }
 
+/**
+ * script execution
+ */
 // when no paths
 if ((argv.paths).length === 0) {
   writeDocFromStdin()
 // when list of paths
 } else {
   argv.paths.forEach((path) => {
-    writeDocFromDirectory(path)
+    fs.stat(path, (err, stats) => {
+      if (err) { throw err }
+
+      if (stats.isFile()) {
+        writeDocFromFile(path)
+      } else if (stats.isDirectory()) {
+        writeDocFromDirectory(path)
+      } else {
+        console.error(`Error reading ${path}, is it a file or directory?`)
+      }
+    })
   })
 }
 
@@ -63,6 +75,8 @@ if ((argv.paths).length === 0) {
  * write documentation from a directory files
  */
 function writeDocFromDirectory(directoryPath) {
+  let templateData = { files: [] }
+
   dir.readFiles(
     directoryPath,
     {
@@ -70,8 +84,8 @@ function writeDocFromDirectory(directoryPath) {
       exclude: argv.excludePatterns,
       excludeDir: argv.ignoreDirs,
     },
-    function(error, content, filename, next) {
-      if (error) { throw error }
+    function(err, content, filename, next) {
+      if (err) { throw err }
       try {
         let components = parse(content, resolver.findAllExportedComponentDefinitions)
         templateData.files.push({ filename, components })
@@ -81,8 +95,8 @@ function writeDocFromDirectory(directoryPath) {
       }
       next()
     },
-    function(error) {
-      if (error) { throw error }
+    function(err) {
+      if (err) { throw err }
       // write the template filled in
       process.stdout.write(template(templateData))
     }
@@ -90,9 +104,26 @@ function writeDocFromDirectory(directoryPath) {
 }
 
 /**
+ * write documentation from a file
+ */
+function writeDocFromFile(filePath) {
+  fs.readFile(filePath, (err, data) => {
+    if (err) { throw err }
+
+    let components = parse(data, resolver.findAllExportedComponentDefinitions)
+
+    process.stdout.write(template({
+      files: [{ filename: filePath, components }]
+    }))
+  })
+}
+
+/**
  * write documentation from STDIN
  */
 function writeDocFromStdin() {
+  let templateData = { files: [] }
+
   // ensure we are using utf8 encoding
   process.stdin.setEncoding('utf8')
 
