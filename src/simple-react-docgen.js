@@ -41,7 +41,13 @@ const argv = require('nomnom')
       help: 'Folders to ignore. Default:',
       list: true,
       default: ['node_modules', '__tests__', '__mocks__'],
-    }
+    },
+    output: {
+      abbr: 'o',
+      full: 'output',
+      help: 'Markdown file to write. If nothing is provided it writes in stdout.',
+      metavar: 'FILE',
+    },
   })
   .parse()
 
