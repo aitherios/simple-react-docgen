@@ -12,6 +12,6 @@ exports.ReactCreateClassComponent = React.createClass({
   },
 
   render: function() {
-    return(<span>{name}-{age}</span>)
+    return(<span>{this.props.name}-{this.props.age}</span>)
   },
 })
