@@ -22,7 +22,7 @@
     "react-docgen",
     "markdown"
   ],
-  "author": "Renan Mendes Carvalho <aitherios@gmail.com>",
+  "author": "Renan Mendes Carvalho <aitherios@gmail.com> (https://github.com/aitherios)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/aitherios/simple-react-docgen/issues"
@@ -61,5 +61,11 @@
       "src"
     ],
     "testRegex": "/__tests__/.*-test\\.js$"
-  }
+  },
+  "maintainers": [
+    "Renan Mendes Carvalho <aitherios@gmail.com> (https://github.com/aitherios)"
+  ],
+  "contributors": [
+    "Renan Mendes Carvalho <aitherios@gmail.com> (https://github.com/aitherios)"
+  ]
 }
