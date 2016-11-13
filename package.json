@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aitherios/simple-react-docgen.git"
+    "url": "git+https://github.com/team-767/simple-react-docgen.git"
   },
   "keywords": [
     "react",
@@ -25,9 +25,9 @@
   "author": "Renan Mendes Carvalho <aitherios@gmail.com> (https://github.com/aitherios)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aitherios/simple-react-docgen/issues"
+    "url": "https://github.com/team-767/simple-react-docgen/issues"
   },
-  "homepage": "https://github.com/aitherios/simple-react-docgen#readme",
+  "homepage": "https://github.com/team-767/simple-react-docgen#readme",
   "dependencies": {
     "handlebars": "^4.0.5",
     "node-dir": "^0.1.16",
