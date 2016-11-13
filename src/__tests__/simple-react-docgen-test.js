@@ -131,7 +131,7 @@ age|number||age description
   })
 
   // crawling mock_dir directory
-  describe('mock_dir', () => {
+  describe('src/__tests__/mock_dir', () => {
     it('writes to sdout and stderr', () => {
       return run([path.join(__dirname, './mock_dir')]).then(([stdout, stderr]) => {
         expect(stdout).not.toBe('')
@@ -175,11 +175,14 @@ name|string||name description
   })
 
   // passing files directly
-  describe('mock_dir/ClassComponent.js mock_dir/ReactCreateClassComponent.js', () => {
+  describe('src/__tests__/mock_dir/ClassComponent.js src/__tests__/mock_dir/ReactCreateClassComponent.js', () => {
     it('writes to sdout and stderr', () => {
-      return run([path.join(__dirname, './mock_dir')]).then(([stdout, stderr]) => {
+      return run([
+        'src/__tests__/mock_dir/ClassComponent.js',
+        'src/__tests__/mock_dir/ReactCreateClassComponent.js'
+      ]).then(([stdout, stderr]) => {
         expect(stdout).not.toBe('')
-        expect(stderr).not.toBe('')
+        expect(stderr).toBe('')
       })
     }, TEST_TIMEOUT)
 
