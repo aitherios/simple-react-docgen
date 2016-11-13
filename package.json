@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Generate simple React components documentation in Markdown",
   "main": "dist/index.js",
+  "bin": {
+    "simple-react-docgen": "dist/simple-react-docgen.js"
+  },
   "scripts": {
     "lint": "eslint src",
     "transpile": "babel src -D -d dist --ignore '__tests__'",
