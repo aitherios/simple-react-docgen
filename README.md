@@ -3,7 +3,7 @@
 [![dependency status](https://img.shields.io/david/team-767/simple-react-docgen.svg?style=flat-square)](https://david-dm.org/team-767/simple-react-docgen)
 [![build status](https://img.shields.io/travis/team-767/simple-react-docgen.svg?style=flat-square)](https://travis-ci.org/team-767/simple-react-docgen)
 
-Generate simple React components documentation in Markdown.
+Generate simple React components documentation in [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
 ## Usage
 
