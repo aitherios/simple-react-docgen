@@ -1,6 +1,6 @@
 {
   "name": "simple-react-docgen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate simple React components documentation in Markdown",
   "main": "dist/index.js",
   "bin": {
