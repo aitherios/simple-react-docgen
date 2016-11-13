@@ -45,7 +45,7 @@ const argv = require('nomnom')
     output: {
       abbr: 'o',
       full: 'output',
-      help: 'Markdown file to write. If nothing is provided it writes in stdout.',
+      help: 'Markdown file to write. If nothing is provided it writes to stdout.',
       metavar: 'FILE',
     },
   })
@@ -53,6 +53,8 @@ const argv = require('nomnom')
 
 // template used to generate the markdown
 const template = Handlebars.compile(`${fs.readFileSync(path.join(__dirname, 'template.handlebars'))}`)
+// where to write the documentation (stdout or file)
+const output = typeof(argv.output) === 'string' ? fs.createWriteStream(argv.output) : process.stdout
 
 /**
  * script execution
@@ -104,7 +106,7 @@ function writeDocFromDirectory(directoryPath) {
     function(err) {
       if (err) { throw err }
       // write the template filled in
-      process.stdout.write(template(templateData))
+      output.write(template(templateData))
     }
   )
 }
@@ -118,7 +120,7 @@ function writeDocFromFile(filePath) {
 
     let components = parse(data, resolver.findAllExportedComponentDefinitions)
 
-    process.stdout.write(template({
+    output.write(template({
       files: [{ filename: filePath, components }]
     }))
   })
@@ -157,6 +159,6 @@ function writeDocFromStdin() {
     }
 
     // write the template filled in
-    process.stdout.write(template(templateData))
+    output.write(template(templateData))
   })
 }
