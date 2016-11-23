@@ -42,6 +42,11 @@ const argv = require('nomnom')
       list: true,
       default: ['node_modules', '__tests__', '__mocks__'],
     },
+    ignoreDocgenErrors: {
+      full: 'ignore-docgen-errors',
+      flag: true,
+      help: 'Ignore errors writen by react-docgen',
+    },
     output: {
       abbr: 'o',
       full: 'output',
@@ -98,8 +103,10 @@ function writeDocFromDirectory(directoryPath) {
         let components = parse(content, resolver.findAllExportedComponentDefinitions)
         templateData.files.push({ filename, components })
       } catch (e) {
-        console.error(`Error from react-docgen at ${filename}:`)
-        console.error(e)
+        if (!argv.ignoreDocgenErrors) {
+          console.error(`Error from react-docgen at ${filename}:`)
+          console.error(e)
+        }
       }
       next()
     },
@@ -154,8 +161,10 @@ function writeDocFromStdin() {
       let components = parse(source, resolver.findAllExportedComponentDefinitions)
       templateData.files.push({ components })
     } catch (e) {
-      console.error('Error from react-docgen:')
-      console.error(e)
+      if (!argv.ignoreDocgenErrors) {
+        console.error('Error from react-docgen:')
+        console.error(e)
+      }
     }
 
     // write the template filled in
