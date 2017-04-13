@@ -1,6 +1,6 @@
 {
   "name": "simple-react-docgen",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Generate simple React components documentation in Markdown",
   "main": "dist/index.js",
   "bin": {
@@ -34,7 +34,7 @@
     "handlebars": "^4.0.5",
     "node-dir": "^0.1.16",
     "nomnom": "^1.8.1",
-    "react-docgen": "^2.12.1"
+    "react-docgen": "^2.14.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

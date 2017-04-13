@@ -10,7 +10,7 @@
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
 {{#each props}}
-{{@key}}|{{type.name}}|{{#if required}}yes{{/if}}|{{description}}
+{{@key}}|{{#if type}}PropType {{type.name}}{{/if}}{{#if flowType}}FlowType {{flowType.name}}{{/if}}|{{#if required}}yes{{/if}}|{{description}}
 {{/each}}
 {{/if}}
 {{/each}}

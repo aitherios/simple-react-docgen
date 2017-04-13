@@ -53,7 +53,7 @@ describe('./simple-react-docgen.js', () => {
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
-name|string||name description
+name|PropType string||name description
 
 `
         )
@@ -81,7 +81,7 @@ name|string||name description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
-name|string||name description
+name|PropType string||name description
 
 `
         )
@@ -109,8 +109,8 @@ name|string||name description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
-name|string|yes|name description
-age|number||age description
+name|PropType string|yes|name description
+age|PropType number||age description
 
 `
         )
@@ -149,7 +149,7 @@ ClassComponent description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
-name|string||name description
+name|PropType string||name description
 
 ### \`src/__tests__/mock_dir/ReactCreateClassComponent.js\`
 
@@ -157,8 +157,8 @@ name|string||name description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
-name|string|yes|name description
-age|number||age description
+name|PropType string|yes|name description
+age|PropType number||age description
 
 ### \`src/__tests__/mock_dir/StatelessComponent.js\`
 
@@ -166,7 +166,7 @@ StatelessComponent description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
-name|string||name description
+name|PropType string||name description
 
 `
         )
@@ -199,7 +199,7 @@ ClassComponent description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
-name|string||name description
+name|PropType string||name description
 
 ### \`src/__tests__/mock_dir/ReactCreateClassComponent.js\`
 
@@ -207,8 +207,8 @@ name|string||name description
 
 Property | Type | Required | Description
 :--- | :--- | :--- | :---
-name|string|yes|name description
-age|number||age description
+name|PropType string|yes|name description
+age|PropType number||age description
 
 `
         )
